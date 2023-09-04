@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connectString = builder.Configuration["ConnectionString:DefaultConnection"];
+
 
 builder.Services.AddDbContext<LineBotApiPracticeContext>(
-        options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 1, 0))));
+        options => options.UseMySql(connectString, new MySqlServerVersion(new Version(8, 1, 0))));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

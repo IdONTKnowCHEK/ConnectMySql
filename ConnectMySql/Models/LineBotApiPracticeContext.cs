@@ -17,9 +17,6 @@ public partial class LineBotApiPracticeContext : DbContext
 
     public virtual DbSet<Linebot> Linebots { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySQL("Name=ConnectionString:DefaultConnection");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Linebot>(entity =>
